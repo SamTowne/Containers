@@ -4,7 +4,7 @@
 
 # Build an S3 bucket and DynamoDB for Terraform state and locking
 module "bootstrap" {
-  source                  = "../modules/bootstrap"
+  source                  = "./modules/bootstrap"
   tfstate_bucket          = "project-name-terraform-tfstate"
   tf_lock_dynamo_table    = "project-name-dynamodb-terraform-locking"
 }
