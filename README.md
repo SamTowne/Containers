@@ -22,7 +22,7 @@ This project is to perform the intitial bootstrapping of Terraform in an AWS acc
     - `terraform apply`
 
 ## (Optional) Setup CI-CD using Github Actions
-**WARNING misconfiguration during these steps can compromise your AWS account. Do not proceed unless you are absolutely certain that the input values you are providing to github-actions-iam module are correct.**
+**WARNING misconfiguration during these steps can compromise your AWS account. Do not proceed unless you are absolutely certain that the input values you are providing to github-actions-iam module are correct and have reviewed the Github Actions module code in detail. By default, this module attaches an admin policy to the role and you may need to consider replacing this with a set of permissions that best match your needs and security risk posture**
 1. Set up the github-actions-iam module.
     - In main.tf, remove the comments from the github-actions-iam module
     - Set the github_workspace variable to the github workspace name. e.g.:, If https://github.com/SamTowne/TerraformAWSBootstrap is the repo URL, set as `SamTowne`
