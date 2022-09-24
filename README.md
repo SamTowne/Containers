@@ -12,6 +12,7 @@ This project is to perform the intitial bootstrapping of Terraform in an AWS acc
     - Replace all instances of PROJECT_NAME with the name of the project
     - Replace all instances of AWS_ACCOUNT_ID with the AWS Account ID in use
     - Replace all instances of AWS_REGION with the AWS region to deploy to
+    - (Optional) Follow below steps to Setup CI-CD using Github Actions
 2. Create the S3 Bucket and Dynamodb locking table.
     - `terraform init`
     - `terraform apply`
