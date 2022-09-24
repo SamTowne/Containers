@@ -1,6 +1,6 @@
 # Build an S3 bucket to store TF state
 resource "aws_s3_bucket" "state_bucket" {
-  bucket = var.tfstate_bucket
+  bucket = "${var.project_prefix}-terraform-tfstate"
 
   # Tells AWS to encrypt the S3 bucket at rest by default
   server_side_encryption_configuration {
@@ -15,7 +15,7 @@ resource "aws_s3_bucket" "state_bucket" {
   versioning {
     enabled = true
   }
-
+  # TODO: upgrade to AWS provider v4 and replace with lifecycle resource and remove this inline configuration
   lifecycle_rule {
     id = "state bucket lifecycle"
     enabled = true
@@ -33,7 +33,7 @@ resource "aws_s3_bucket" "state_bucket" {
 
 # Build a DynamoDB Table to use for Terraform state locking
 resource "aws_dynamodb_table" "tf_lock_state" {
-  name = var.tf_lock_dynamo_table
+  name = "${var.project_prefix}-dynamodb-terraform-locking"
   billing_mode = "PAY_PER_REQUEST"
   hash_key = "LockID"
 
@@ -42,4 +42,3 @@ resource "aws_dynamodb_table" "tf_lock_state" {
     type = "S"
   }
 }
-          
